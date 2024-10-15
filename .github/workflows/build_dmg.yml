@@ -12,12 +12,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # Updated to the latest version
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4  # Updated to the latest version
       with:
-        python-version: '3.12.4'  # Specify the Python version
+        python-version: '3.x'  # Specify the Python version
 
     - name: Install dependencies
       run: |
@@ -26,15 +26,15 @@ jobs:
 
     - name: Build the application
       run: |
-        pyinstaller --onefile --windowed hello.py  # Replace with your script
+        pyinstaller --onefile --windowed hello_world.py  # Replace with your script
 
     - name: Create DMG
       run: |
         mkdir output
-        hdiutil create -volname "HelloWorld" -srcfolder dist/hello.app -ov -format UDZO output/HelloWorld.dmg
+        hdiutil create -volname "HelloWorld" -srcfolder dist/hello_world.app -ov -format UDZO output/HelloWorld.dmg
 
     - name: Upload DMG
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # Updated to the latest version
       with:
         name: HelloWorld-DMG
         path: output/HelloWorld.dmg
