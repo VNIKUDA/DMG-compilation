@@ -1,4 +1,4 @@
-name: Build macOS Disk Image
+name: Build macOS Disk Image with Pyinstaller tool
 
 on:
   push:
